@@ -5,3 +5,6 @@ C:\Users\Milivoj\Desktop\ProjektiC#\Battleship-Project\BattleshipLiteApp\BattleS
 C:\Users\Milivoj\Desktop\ProjektiC#\Battleship-Project\BattleshipLiteApp\BattleShipLite\obj\Debug\BattleShipLite.csproj.CoreCompileInputs.cache
 C:\Users\Milivoj\Desktop\ProjektiC#\Battleship-Project\BattleshipLiteApp\BattleShipLite\obj\Debug\BattleShipLite.exe
 C:\Users\Milivoj\Desktop\ProjektiC#\Battleship-Project\BattleshipLiteApp\BattleShipLite\obj\Debug\BattleShipLite.pdb
+C:\Users\Milivoj\Desktop\ProjektiC#\Battleship-Project\BattleshipLiteApp\BattleShipLite\bin\Debug\BattleshipLiteLibrary.dll
+C:\Users\Milivoj\Desktop\ProjektiC#\Battleship-Project\BattleshipLiteApp\BattleShipLite\bin\Debug\BattleshipLiteLibrary.pdb
+C:\Users\Milivoj\Desktop\ProjektiC#\Battleship-Project\BattleshipLiteApp\BattleShipLite\obj\Debug\BattleShipLite.csproj.CopyComplete
