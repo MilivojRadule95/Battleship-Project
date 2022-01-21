@@ -117,6 +117,7 @@ namespace BattleshipLiteLibrary
         public static int GetShotCount(PlayerInfoModel player)
         {
             int shotCount = 0;
+
             foreach (var shot in player.ShotGrid)
             {
                 if (shot.Status != GridSpotStatus.Empty)
@@ -172,6 +173,7 @@ namespace BattleshipLiteLibrary
                 if (ship.SpotLetter == row.ToUpper() && ship.SpotNumber == column)
                 {
                     isAHit = true;
+                    ship.Status = GridSpotStatus.Sunk;
                 }
             }
 

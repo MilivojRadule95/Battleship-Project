@@ -38,9 +38,9 @@ namespace BattleShipLite
                     //use tuple or temporary variable to swap positions??
 
                     //SWAP USING TEMP VARIABLE:
-                    PlayerInfoModel tempHolder = opponent;
-                    opponent = activePlayer;
-                    activePlayer = tempHolder;
+                    //PlayerInfoModel tempHolder = opponent;
+                    //opponent = activePlayer;
+                    //activePlayer = tempHolder;
                     
                     //swap using tuple:
                     (activePlayer, opponent) = (opponent, activePlayer);
@@ -74,9 +74,16 @@ namespace BattleShipLite
 
             do
             {
-                string shot = AskForShot();
-                ( row, column) = GameLogic.SplitShotIntoRowAndColum(shot);
-                isValidShoot = GameLogic.ValidateShot(activePlayer, row, column);
+                string shot = AskForShot(activePlayer);
+                try
+                {
+                    (row, column) = GameLogic.SplitShotIntoRowAndColum(shot);
+                    isValidShoot = GameLogic.ValidateShot(activePlayer, row, column);
+                }
+                catch (Exception ex)
+                {
+                    isValidShoot = false;
+                }
 
                 if (isValidShoot == false)
                 {
@@ -90,12 +97,26 @@ namespace BattleShipLite
             bool isAHit = GameLogic.IdentifyShotResult(opponent, row, column);
 
             //Record results
-            GameLogic.MarkShotResult(activePlayer, row, column, isAHit); 
+            GameLogic.MarkShotResult(activePlayer, row, column, isAHit);
+
+            DisplayShotResults(row, column, isAHit);
         }
 
-        private static string AskForShot()
+        private static void DisplayShotResults(string row, int column, bool isAHit)
         {
-            Console.WriteLine($"Please enter your shot selection: ");
+            if (isAHit)
+            {
+                Console.WriteLine($"{row}{column} is a Hit!");
+            }
+            else
+            {
+                Console.WriteLine($"{row}{column} is a miss.");
+            }
+        }
+
+        private static string AskForShot(PlayerInfoModel player)
+        {
+            Console.WriteLine($"{ player.UsersName }, please enter your shot selection: ");
             string output = Console.ReadLine();
 
             return output; 
@@ -103,9 +124,10 @@ namespace BattleShipLite
 
         private static void DisplayShotGrid(PlayerInfoModel activePlayer)
         {
+            string currentRow = activePlayer.ShotGrid[0].SpotLetter;
+
             foreach (var gridSpot in activePlayer.ShotGrid)
             {
-                string currentRow = activePlayer.ShotGrid[0].SpotLetter;
                 if (gridSpot.SpotLetter != currentRow)
                 {
                     Console.WriteLine();
@@ -118,18 +140,20 @@ namespace BattleShipLite
                 }
                 else if (gridSpot.Status == GridSpotStatus.Hit)
                 {
-                    Console.Write(" X ");
+                    Console.Write(" X  ");
 
                 }
                 else if (gridSpot.Status == GridSpotStatus.Miss)
                 {
-                    Console.Write(" O ");
+                    Console.Write(" O  ");
                 }
                 else
                 {
-                    Console.Write(" ? ");
+                    Console.Write(" ?  ");
                 }
             }
+            Console.WriteLine();
+            Console.WriteLine();
         }
 
         private static void WelcomeMessage()
@@ -146,10 +170,13 @@ namespace BattleShipLite
 
             //Ask user for their name
             output.UsersName = AskForUsersName();
+
             //Load up the shot grid
             GameLogic.InitalizeGrid(output);
+
             //Ask the user for their 5 ships placments
             ShipPlacment(output);
+
             //Clear
             Console.Clear();
 
@@ -169,7 +196,17 @@ namespace BattleShipLite
                 Console.Write($"Where do you want to place your ship number {model.ShipLocations.Count + 1}: ");
                 string location = Console.ReadLine();
 
-                bool isValidLocation = GameLogic.PlaceShip(model, location);
+                bool isValidLocation = false;
+
+                try
+                {
+                    isValidLocation = GameLogic.PlaceShip(model, location);
+                }
+                catch (Exception ex)
+                {
+
+                    Console.WriteLine("Erorr" + ex.Message);
+                }
 
                 if (isValidLocation == false)
                 {
