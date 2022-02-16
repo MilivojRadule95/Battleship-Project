@@ -8,3 +8,4 @@ C:\Users\Milivoj\Desktop\ProjektiC#\Battleship-Project\BattleshipLiteApp\BattleS
 C:\Users\Milivoj\Desktop\ProjektiC#\Battleship-Project\BattleshipLiteApp\BattleShipLite\bin\Debug\BattleshipLiteLibrary.dll
 C:\Users\Milivoj\Desktop\ProjektiC#\Battleship-Project\BattleshipLiteApp\BattleShipLite\bin\Debug\BattleshipLiteLibrary.pdb
 C:\Users\Milivoj\Desktop\ProjektiC#\Battleship-Project\BattleshipLiteApp\BattleShipLite\obj\Debug\BattleShipLite.csproj.CopyComplete
+C:\Users\Milivoj\Desktop\ProjektiC#\Battleship-Project\BattleshipLiteApp\BattleShipLite\obj\Debug\BattleShipLite.csproj.SuggestedBindingRedirects.cache
